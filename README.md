@@ -1,46 +1,10 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- multiple sequential API 요청 문제
+  이게 뭔말이냐고 하면 동일 호스트에서 호출하는 녀석만 받는다는 것이다.
+가령 여러분의 view서버가 localhost:5500이라고 가정해보자. 그런데 api서버가 localhost:3000이라면 둘의 호스트는 다르다.
+여기서 말하는 호스트는 ip + port를 의미하는것이므로 만약 ip가 다르다면 당연히 둘의 호스트는 다르다.
+view서버에서 api서버로 호출하게 되면 localhost:5500페이지에서 localhost:3000으로 요청하는 것이므로 동일 출처를 위반하게 된다.
+그래서 데이터가 전송이 안되게 된다. 하지만 그러면 api서버 자체가 성립이 안된다. 당연히 api서버는 동일 호스트이지 않을 확률이 높(다곤 했지만 거의 대부분)을 것인데 어떻게 하나?
+이 정책은 과거의 유산인데 과거가 어쩌구 저쩌구는 다른데를 검색해 보고 결국 이게 방해되는건 사실이다.
+이를 해결하기 위해서 보통 cors 플러그인을 사용한다. 위에 설명한것 처럼하면된다.
+cors는 (Cross Origin Resource Sharing)의 줄임말인데 쉽게 말해서 Same Origin이 아니라 Cross Origin(다른데서 보내는거)을 허용해준다는 이야기이다.
+즉 서버에서 허용을 해주면 설사 origin이 다르더라더 사용할 수 있다는 것이다.
