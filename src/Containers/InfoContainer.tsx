@@ -6,10 +6,10 @@ const InfoContainer = () => {
   const [searchParams] = useSearchParams();
   const pageParam = searchParams.get('summoner');
 
-  const { status, data, error, isFetching } = useSummonerData(pageParam);
+  const result = pageParam && useSummonerData(pageParam).data;
 
   console.log(pageParam);
-  console.log(data);
+  console.log(result);
 
   return <div>hello</div>;
 };
