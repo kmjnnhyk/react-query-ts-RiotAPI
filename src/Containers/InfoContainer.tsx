@@ -1,15 +1,19 @@
 import useSummonerData from 'hooks/useSummonerData';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const InfoContainer = () => {
   const [searchParams] = useSearchParams();
   const pageParam = searchParams.get('summoner');
 
-  const result = pageParam && useSummonerData(pageParam).data;
-
-  console.log(pageParam);
-  console.log(result);
+  const results =
+    pageParam &&
+    useSummonerData(pageParam, {
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        console.log(data);
+      },
+    });
 
   return <div>hello</div>;
 };
