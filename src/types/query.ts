@@ -1,7 +1,15 @@
-export interface SummonerDataType {
+export type SummonerDataType = {
+  freshBlood: boolean;
+  hotStreak: boolean;
+  inactive: boolean;
+  leagueId: string;
+  leaguePoints: number;
+  losses: number;
+  queueType: string;
+  rank: string;
+  summonerId: string;
   summonerName: string;
   tier: string;
-  rank: string;
+  veteran: boolean;
   wins: number;
-  losses: number;
-}
+};
