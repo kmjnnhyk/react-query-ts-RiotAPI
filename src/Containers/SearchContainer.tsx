@@ -5,8 +5,7 @@ const SearchContainer: React.FC = () => {
   const [input, setInput] = useState('');
   const [search, setSearch] = useSearchParams();
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setInput(e.target.value);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
