@@ -1,15 +1,22 @@
-export type SummonerDataType = {
-  freshBlood: boolean;
-  hotStreak: boolean;
-  inactive: boolean;
-  leagueId: string;
-  leaguePoints: number;
-  losses: number;
-  queueType: string;
-  rank: string;
-  summonerId: string;
-  summonerName: string;
-  tier: string;
-  veteran: boolean;
-  wins: number;
-};
+import { UseQueryResult } from 'react-query';
+
+export type SummonerDataType =
+  | {
+      freshBlood: boolean;
+      hotStreak: boolean;
+      inactive: boolean;
+      leagueId: string;
+      leaguePoints: number;
+      losses: number;
+      queueType: string;
+      rank: string;
+      summonerId: string;
+      summonerName: string;
+      tier: string;
+      veteran: boolean;
+      wins: number;
+    }
+  | null
+  | ''
+  | UseQueryResult
+  | undefined;
