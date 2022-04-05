@@ -1,21 +1,18 @@
+import { InfoComponent } from 'Components/InfoComponent';
+import { Loading } from 'Components/Loading';
 import useSummonerData from 'hooks/useSummonerData';
-import React, { useEffect } from 'react';
+import React from 'react';
+
 import { useSearchParams } from 'react-router-dom';
 
-const InfoContainer = () => {
-  const [searchParams] = useSearchParams();
-  const pageParam = searchParams.get('summoner');
+const InfoContainer = ({ pageParam }: { pageParam: string | null }) => {
+  const results = useSummonerData(pageParam, {
+    refetchOnWindowFocus: false,
+  });
 
-  const results =
-    pageParam &&
-    useSummonerData(pageParam, {
-      refetchOnWindowFocus: false,
-      onSuccess: (data) => {
-        console.log(data);
-      },
-    });
+  console.log(results?.data);
 
-  return <div>hello</div>;
+  return <>{results?.isLoading ? <Loading /> : <InfoComponent summonerData={results?.data} />}</>;
 };
 
 export default InfoContainer;
