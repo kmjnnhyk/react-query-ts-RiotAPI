@@ -1,5 +1,3 @@
-import InfoContainer from 'Containers/InfoContainer';
-import SearchContainer from 'Containers/SearchContainer';
 import Home from 'pages/Home';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
