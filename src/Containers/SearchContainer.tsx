@@ -1,24 +1,14 @@
-import React, { useState } from 'react';
+import { SearchComponent } from 'Components/SearchComponent';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const SearchContainer: React.FC = () => {
-  const [input, setInput] = useState('');
-  const [search, setSearch] = useSearchParams();
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSearch({ summoner: input });
-    setInput('');
+const SearchContainer = () => {
+  const [params, setParams] = useSearchParams();
+  const moveURL = <ParamType extends string>(query: ParamType) => {
+    setParams({ summoner: query });
   };
 
-  return (
-    <form onSubmit={onSubmit}>
-      <input type='text' value={input} onChange={onChange} />
-      <button type='submit'>SEARCH</button>
-    </form>
-  );
+  return <SearchComponent moveURL={moveURL} />;
 };
 
 export default SearchContainer;
