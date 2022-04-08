@@ -1,6 +1,13 @@
 import React from 'react';
-import { SummonerDataType } from 'types/query';
+import { SummonerDataType } from 'types/RiotApiTypes';
 
 export const InfoComponent = ({ summonerData }: { summonerData: SummonerDataType }) => {
-  return <div>InfoCompo</div>;
+  return (
+    <>
+      <div>{summonerData?.summonerName}</div>
+      <div>
+        {summonerData?.tier}({summonerData?.rank})
+      </div>
+    </>
+  );
 };
